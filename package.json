@@ -1,21 +1,29 @@
 {
     "name": "gosnippets",
-    "displayName": "Useful Golang snippets",
+    "displayName": "Golang snippets",
     "description": "Snippets for productive work",
     "version": "0.0.1",
-    "publisher": "Alexander NeonXP Kiryukhin",
+    "publisher": "neonxp",
     "engines": {
         "vscode": "^1.28.0"
     },
+    "icon": "icon.png",
     "categories": [
         "Snippets"
     ],
     "contributes": {
         "snippets": [
             {
-                "language": "golang",
+                "language": "go",
                 "path": "./snippets.json"
             }
         ]
+    },
+    "scripts": {
+        "build": "vsce package"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/neonxp/GoSnippets"
     }
 }
