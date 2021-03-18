@@ -1,0 +1,65 @@
+{
+    "Interface declaration": {
+        "body": [
+            "type $1 interface {",
+            "\t$0",
+            "}"
+        ],
+        "description": "go interface type",
+        "prefix": "tyi"
+    },
+    "Package line": {
+        "body": [
+            "package ${TM_DIRECTORY/.+\\/(.+)$/${1:/downcase}/}",
+            "",
+            "$0"
+        ],
+        "description": "package header",
+        "prefix": "pkg"
+    },
+    "Stack from array": {
+        "body": [
+            "type ${1:name} []${2:type}",
+            "",
+            "func (s *$1) Push(item $2) {",
+            "\t*s = append(*s, item)",
+            "}",
+            "",
+            "func (s *$1) Pop() (item $2) {",
+            "\tif len(*s) == 0 {",
+            "\t\treturn",
+            "\t}",
+            "",
+            "\t*s, item = (*s)[:len(*s)-1], (*s)[len(*s)-1]",
+            "\treturn item",
+            "}"
+        ],
+        "description": "stack from array type",
+        "prefix": "stack"
+    },
+    "Structure constructor": {
+        "body": [
+            "// New instance of $1 type.",
+            "func New${1:type}(${2}) *$1 {",
+            "\t$3",
+            "\treturn &$1{$4}",
+            "}"
+        ],
+        "description": "constructor for structure type",
+        "prefix": "construct"
+    },
+    "Structure declaration": {
+        "body": [
+            "type $1 struct {",
+            "\t$0",
+            "}"
+        ],
+        "description": "strucutre type",
+        "prefix": "tys"
+    },
+    "Variable declaration": {
+        "body": "var $1 $2 = $3",
+        "description": "variable with type and value",
+        "prefix": "var"
+    }
+}

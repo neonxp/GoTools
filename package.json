@@ -1,0 +1,21 @@
+{
+    "name": "gosnippets",
+    "displayName": "Useful Golang snippets",
+    "description": "Snippets for productive work",
+    "version": "0.0.1",
+    "publisher": "Alexander NeonXP Kiryukhin",
+    "engines": {
+        "vscode": "^1.28.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "golang",
+                "path": "./snippets.json"
+            }
+        ]
+    }
+}
