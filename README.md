@@ -1,5 +1,10 @@
 # Golang snippets
 
+[![Version](https://vsmarketplacebadge.apphb.com/version/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
+
+[Install extension](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
+
 Extensions with frequently used snippets for productive go development.
 
 Extension in active development! Your contribution is always welcome :)
