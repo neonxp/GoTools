@@ -1,13 +1,4 @@
 {
-    "Interface declaration": {
-        "body": [
-            "type $1 interface {",
-            "\t$0",
-            "}"
-        ],
-        "description": "go interface type",
-        "prefix": "tyi"
-    },
     "Package line": {
         "body": [
             "package ${TM_DIRECTORY/.+\\/(.+)$/${1:/downcase}/}",
@@ -47,15 +38,6 @@
         ],
         "description": "constructor for structure type",
         "prefix": "construct"
-    },
-    "Structure declaration": {
-        "body": [
-            "type $1 struct {",
-            "\t$0",
-            "}"
-        ],
-        "description": "strucutre type",
-        "prefix": "tys"
     },
     "Variable declaration": {
         "body": "var $1 $2 = $3",

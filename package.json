@@ -1,29 +1,62 @@
 {
-    "name": "gotools",
-    "displayName": "Golang snippets",
-    "description": "Snippets for productive work",
-    "version": "0.0.1",
-    "publisher": "neonxp",
-    "engines": {
-        "vscode": "^1.28.0"
-    },
-    "icon": "icon.png",
-    "categories": [
-        "Snippets"
-    ],
-    "contributes": {
-        "snippets": [
-            {
-                "language": "go",
-                "path": "./snippets.json"
-            }
-        ]
-    },
-    "scripts": {
-        "build": "vsce package"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/neonxp/GoTools"
-    }
+	"name": "gotools",
+	"displayName": "Golang tools",
+	"description": "Tools for productive work",
+	"version": "0.0.2",
+	"publisher": "neonxp",
+	"author": {
+		"name": "Alexander NeonXP Kiryukhin",
+		"email": "a.kiryukhin@mail.ru",
+		"url": "https://neonxp.ru/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/neonxp/GoTools"
+	},
+	"icon": "icon.png",
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Other"
+	],
+	"keywords": [
+		"go",
+		"golang"
+	],
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"onLanguage:go"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "go",
+				"path": "./snippets/snippets.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.54.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	}
 }
