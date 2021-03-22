@@ -1,13 +1,15 @@
-# Golang snippets
+# Golang Tools
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 
 [Install extension](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 
-Extensions with frequently used snippets for productive go development.
+Extensions with frequently used snippets and code actions for productive go development.
 
 Extension in active development! Your contribution is always welcome :)
+
+# Snippets
 
 | Prefix| Description | Example |
 | :---- |:-----------:| -------:|
@@ -15,3 +17,7 @@ Extension in active development! Your contribution is always welcome :)
 | `construct` | Constructor for structure type | see in action |
 | `var` | Variable with type and value | `var test string = "hello"` |
 | `stack` | Stack from array of types | see in action |
+
+# Code actions
+
+* Add error checking - adds stub error checking to current line

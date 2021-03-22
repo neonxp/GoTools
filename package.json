@@ -1,8 +1,8 @@
 {
 	"name": "gotools",
-	"displayName": "Golang tools",
+	"displayName": "Golang Tools",
 	"description": "Tools for productive work",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "neonxp",
 	"author": {
 		"name": "Alexander NeonXP Kiryukhin",
