@@ -1,42 +1,17 @@
 import * as vscode from 'vscode';
 
-const fnRegex = /^(\t*)(.*)err(\s?):=(.+?)$/
+const fnRegex = /^\t*(.*)err\s?:=.+?$/
 
 export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(vscode.languages.registerCodeActionsProvider('go', new ErrorsWrapper(), {
-		providedCodeActionKinds: ErrorsWrapper.providedCodeActionKinds
-	}));
 	context.subscriptions.push(
-		vscode.commands.registerCommand('gotools.wrap-error', () => {
-			const editor = vscode.window.activeTextEditor;
-			if (editor) {
-				const document = editor.document;
-				const line = document.lineAt(editor.selection.start.line);
-				const matches = line.text.match(fnRegex);
-				if (matches == null) {
-					return;
-				}
-				if (matches.length > 0) {
-					const intendation = matches[1];
-					const extravars = matches[2].split(',').map(x => x.trim()).filter(x => x);
-					const rest = matches[4].trim();
-					editor.edit(editBuilder => {
-						if (extravars.filter(x => x != "_").length > 0) {
-							editBuilder.insert(
-								new vscode.Position(line.lineNumber + 1, 0),
-								`${intendation}if err != nil {\n${intendation}\treturn err\n${intendation}}`
-							);
-						} else {
-							extravars.push("err");
-							editBuilder.replace(
-								line.range,
-								`${intendation}if ${extravars.join(", ")} := ${rest}; err != nil {\n${intendation}\treturn err\n${intendation}}`
-							);
-						}
-					});
-				}
-			}
-		})
+		vscode.languages.registerCodeActionsProvider(
+			'go',
+			new ErrorsWrapper(),
+			{ providedCodeActionKinds: ErrorsWrapper.providedCodeActionKinds }
+		)
+	);
+	context.subscriptions.push(
+		vscode.commands.registerCommand('gotools.wrap-error', wrapError)
 	);
 }
 
@@ -53,7 +28,6 @@ export class ErrorsWrapper implements vscode.CodeActionProvider {
 		if (!editor) {
 			return undefined;
 		}
-		const selection = editor.selection;
 		const line = document.lineAt(editor.selection.start.line);
 		if (!fnRegex.test(line.text)) {
 			return undefined;
@@ -65,3 +39,36 @@ export class ErrorsWrapper implements vscode.CodeActionProvider {
 		];
 	}
 }
+
+const wrapError = () => {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return;
+	}
+	const document = editor.document;
+	const line = document.lineAt(editor.selection.start.line);
+	const matches = line.text.match(fnRegex);
+	if (matches == null || matches.length == 0) {
+		return;
+	}
+	const extravars = matches[1].split(',').map(x => x.trim()).filter(x => x);
+	if (extravars.filter(x => x != "_").length > 0) {
+		editor.insertSnippet(
+			new vscode.SnippetString(`\nif err != nil {\n\t\${1:return \${2:nil, }\${3:err}}\n}\n`),
+			new vscode.Position(line.range.end.line, line.range.end.character + line.firstNonWhitespaceCharacterIndex),
+		)
+	} else {
+		editor.insertSnippet(
+			new vscode.SnippetString(`if `),
+			new vscode.Position(line.range.start.line, line.range.start.character + line.firstNonWhitespaceCharacterIndex),
+		)
+		editor.insertSnippet(
+			new vscode.SnippetString(`; err != nil {\n\t\${1:return \${2:nil, }\${3:err}}\n}\n`),
+			new vscode.Position(line.range.end.line, line.range.end.character + line.firstNonWhitespaceCharacterIndex + 3),
+			{
+				undoStopAfter: true,
+				undoStopBefore: false,
+			}
+		)
+	}
+};

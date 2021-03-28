@@ -30,7 +30,7 @@
     },
     "Structure constructor": {
         "body": [
-            "// New instance of $1 type.",
+            "// New$1 returns new $1.",
             "func New${1:type}(${2}) *$1 {",
             "\t$3",
             "\treturn &$1{$4}",
