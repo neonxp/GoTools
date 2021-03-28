@@ -21,4 +21,6 @@ Extension in active development! Your contribution is always welcome :)
 
 # Code actions
 
-* Add error checking - adds stub error checking to current line
+`Add error checking` - adds stub error checking to current line:
+
+<img src="/wraperror.gif" width="500" />
