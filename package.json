@@ -2,7 +2,7 @@
 	"name": "gotools",
 	"displayName": "Golang Tools",
 	"description": "Tools for productive work",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "neonxp",
 	"license": "GPL-3.0-or-later",
 	"author": {
