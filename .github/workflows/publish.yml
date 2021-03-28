@@ -1,8 +1,5 @@
 on:
-  push:
-    tags:
-      - "*"
-
+  release:
 name: Deploy Extension
 jobs:
   deploy:
