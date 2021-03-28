@@ -2,7 +2,7 @@
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/neonxp.gotools?label=Visual%20Studio%20Marketplace%20installs)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
-[![Installs](https://img.shields.io/open-vsx/dt/neonxp/gotools?label=Open-VSX%20downloads)](https://open-vsx.org/extension/neonxp/gotools)
+[![Installs](https://img.shields.io/open-vsx/dt/neonxp/gotools?label=Open-VSX%20installs)](https://open-vsx.org/extension/neonxp/gotools)
 [![GPLv3](https://img.shields.io/github/license/neonxp/GoTools)](/LICENSE)
 
 [Install extension from Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
