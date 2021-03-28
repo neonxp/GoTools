@@ -2,6 +2,7 @@
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/neonxp.gotools.svg)](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
+[![GPL-3](https://img.shields.io/github/license/neonxp/GoTools)](/LICENSE)
 
 [Install extension](https://marketplace.visualstudio.com/items?itemName=neonxp.gotools)
 
