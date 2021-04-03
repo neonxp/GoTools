@@ -2,7 +2,7 @@
 	"name": "gotools",
 	"displayName": "Golang Tools",
 	"description": "Tools for productive work",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"publisher": "neonxp",
 	"license": "GPL-3.0-or-later",
 	"author": {
@@ -36,6 +36,20 @@
 			{
 				"language": "go",
 				"path": "./snippets/snippets.json"
+			}
+		],
+		"menus": {
+			"touchBar": [
+				{
+					"command": "gotools.wrap-error",
+					"when": "allowWrapIferr"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "gotools.wrap-error",
+				"title": "if err≠nil {...}"
 			}
 		]
 	},

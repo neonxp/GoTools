@@ -1,5 +1,6 @@
 on:
   release:
+  push:
 name: Deploy Extension
 jobs:
   deploy:
