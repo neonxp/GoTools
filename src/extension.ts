@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 
-const fnRegex = /^\t*(.*)err\s?:=.+?$/
+const fnRegex = /^\t*(.*)err\s?:?=.+?$/
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
@@ -28,10 +28,13 @@ export class ErrorsWrapper implements vscode.CodeActionProvider {
 		if (!editor) {
 			return undefined;
 		}
+
 		const line = document.lineAt(editor.selection.start.line);
 		if (!fnRegex.test(line.text)) {
+			vscode.commands.executeCommand('setContext', 'allowWrapIferr', false);
 			return undefined;
 		}
+		vscode.commands.executeCommand('setContext', 'allowWrapIferr', true);
 		const action = new vscode.CodeAction('Add error checking', vscode.CodeActionKind.RefactorRewrite);
 		action.command = { command: 'gotools.wrap-error', title: 'Add error checking block', tooltip: '' };
 		return [
@@ -46,6 +49,7 @@ const wrapError = () => {
 		return;
 	}
 	const document = editor.document;
+
 	const line = document.lineAt(editor.selection.start.line);
 	const matches = line.text.match(fnRegex);
 	if (matches == null || matches.length == 0) {
