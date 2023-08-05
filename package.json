@@ -1,12 +1,12 @@
 {
-  "name": "gotools",
-  "displayName": "Golang Tools",
-  "description": "Tools for productive work",
-  "version": "0.1.1",
-  "engines": {
-    "vscode": "^1.81.0"
-  },
-  "publisher": "neonxp",
+	"name": "gotools",
+	"displayName": "Golang Tools",
+	"description": "Tools for productive work",
+	"version": "0.1.2",
+	"engines": {
+		"vscode": "^1.81.0"
+	},
+	"publisher": "neonxp",
 	"license": "GPL-3.0-or-later",
 	"author": {
 		"name": "Alexander NeonXP Kiryukhin",
@@ -27,10 +27,10 @@
 		"go",
 		"golang"
 	],
-  "activationEvents": [
+	"activationEvents": [
 		"onLanguage:go"
-  ],
-  "main": "./src/extension.js",
+	],
+	"main": "./src/extension.js",
 	"contributes": {
 		"snippets": [
 			{
@@ -53,20 +53,20 @@
 			}
 		]
 	},
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.81.0",
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "20.2.5",
-    "eslint": "^8.41.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.2.0",
-    "typescript": "^5.1.3",
-    "@vscode/test-electron": "^2.3.2"
-  }
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.81.0",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "20.2.5",
+		"eslint": "^8.41.0",
+		"glob": "^8.1.0",
+		"mocha": "^10.2.0",
+		"typescript": "^5.1.3",
+		"@vscode/test-electron": "^2.3.2"
+	}
 }
