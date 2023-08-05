@@ -15,13 +15,11 @@ Extension in active development! Your contribution is always welcome :)
 
 # Snippets
 
-| Prefix| Description | Example |
-| :---- |:-----------:| -------:|
-| `pkg` | Package header line | `package test` |
-| `construct` | Constructor for structure type | see in action |
-| `var` | Variable with type and value | `var test string = "hello"` |
-| `stack` | Stack from array of types | see in action |
-
+| Prefix| Description|
+| :---- |:----------:|
+| `pkg` | Package header line |
+| `construct` | Constructor for structure type |
+| `iferr` |if err := fuction(); err != nil { ... }|
 # Code actions
 
 `Add error checking` - adds stub error checking to current line:

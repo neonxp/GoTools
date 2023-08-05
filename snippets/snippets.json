@@ -1,5 +1,5 @@
 {
-    "Package line": {
+    "package line": {
         "body": [
             "package ${TM_DIRECTORY/.+\\/(.+)$/${1:/downcase}/}",
             "",
@@ -8,27 +8,7 @@
         "description": "package header",
         "prefix": "pkg"
     },
-    "Stack from array": {
-        "body": [
-            "type ${1:name} []${2:type}",
-            "",
-            "func (s *$1) Push(item $2) {",
-            "\t*s = append(*s, item)",
-            "}",
-            "",
-            "func (s *$1) Pop() (item $2) {",
-            "\tif len(*s) == 0 {",
-            "\t\treturn",
-            "\t}",
-            "",
-            "\t*s, item = (*s)[:len(*s)-1], (*s)[len(*s)-1]",
-            "\treturn item",
-            "}"
-        ],
-        "description": "stack from array type",
-        "prefix": "stack"
-    },
-    "Structure constructor": {
+    "structure constructor": {
         "body": [
             "// New$1 returns new $1.",
             "func New${1:type}(${2}) *$1 {",
@@ -39,9 +19,9 @@
         "description": "constructor for structure type",
         "prefix": "construct"
     },
-    "Variable declaration": {
-        "body": "var $1 $2 = $3",
-        "description": "variable with type and value",
-        "prefix": "var"
+    "if err := ...; err != nil": {
+        "prefix": "iferr",
+        "body": "if err := ${1}; err != nil {\n\t${2:return ${3:nil, }${4:err}}\n}",
+        "description": "Snippet for if err := ...; err != nil"
     }
 }
