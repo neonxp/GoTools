@@ -20,3 +20,20 @@ Extension in active development! Your contribution is always welcome :)
 `Add error checking` - adds stub error checking to current line:
 
 <img src="/wraperror.gif" width="500" />
+
+
+# Interface implementation
+
+Command "Go: Implement Interface Methods" based on https://github.com/ricardoerikson/vscode-go-impl-methods/ extension.
+
+Install the impl package as follows:
+
+```
+go get -u github.com/josharian/impl
+```
+
+## Usage
+
+1. At command pallete select command "Go: Implement Interface Methods"
+2. Write receiver for methods. Example: "f *File", "m MyType", "c CustomType" 
+3. Select interface to implement

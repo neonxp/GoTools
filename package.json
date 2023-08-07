@@ -2,9 +2,9 @@
 	"name": "gotools",
 	"displayName": "Golang Tools",
 	"description": "Tools for productive work",
-	"version": "0.1.2",
+	"version": "0.1.4",
 	"engines": {
-		"vscode": "^1.81.0"
+		"vscode": "^1.80.0"
 	},
 	"publisher": "neonxp",
 	"license": "GPL-3.0-or-later",
@@ -28,7 +28,8 @@
 		"golang"
 	],
 	"activationEvents": [
-		"onLanguage:go"
+		"onLanguage:go",
+		"onCommand:gotools.implement"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -50,6 +51,11 @@
 			{
 				"command": "gotools.wrap-error",
 				"title": "if err≠nil {...}"
+			},
+			{
+				"command": "gotools.implement",
+				"title": "Implement Interface Methods",
+				"category": "Go"
 			}
 		]
 	},
@@ -59,14 +65,18 @@
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.81.0",
 		"@types/glob": "^8.1.0",
 		"@types/mocha": "^10.0.1",
 		"@types/node": "20.2.5",
+		"@types/vscode": "^1.80.0",
+		"@vscode/test-electron": "^2.3.2",
 		"eslint": "^8.41.0",
 		"glob": "^8.1.0",
 		"mocha": "^10.2.0",
 		"typescript": "^5.1.3",
-		"@vscode/test-electron": "^2.3.2"
+		"lodash.debounce": "^4.0.8"
+	},
+	"dependencies": {
+		"lodash.debounce": "^4.0.8"
 	}
 }
