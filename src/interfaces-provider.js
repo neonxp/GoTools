@@ -9,9 +9,9 @@ function provideInterfaces(keyword, callback) {
             (objects) => {
                 const interfaces = objects.
                     filter(x => x.kind == vscode.SymbolKind.Interface).
-                    map(x => x.name)
+                    map(x => ({ label: x.name, detail: x.containerName }))
                 callback(interfaces);
             });
 }
 
-module.exports = provideInterfaces
+module.exports = { provideInterfaces };

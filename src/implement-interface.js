@@ -1,10 +1,8 @@
 const vscode = require('vscode');
 const { dirname } = require('path');
 const cp = require('child_process');
-const provideInterfaces = require('./interfaces-provider');
+const { provideInterfaces } = require('./interfaces-provider');
 const debounce = require('lodash.debounce');
-
-
 
 function selectReceiver() {
     const receiverInput = vscode.window.createInputBox();
@@ -15,11 +13,11 @@ function selectReceiver() {
         if (value != "" && !value.match(pattern)) {
             receiverInput.validationMessage = `Valid format: "f *File", "m MyType", "c CustomType"`;
         } else {
-          receiverInput.validationMessage = '';
+            receiverInput.validationMessage = '';
         }
     });
 
-    receiverInput.onDidAccept(e => {
+    receiverInput.onDidAccept(() => {
         const receiver = receiverInput.value;
         const matches = receiver.match(pattern);
         if (!matches) {
@@ -45,8 +43,7 @@ function selectInterface(receiver) {
     quickPick.placeholder = "Which interface would you like to implement?";
     const debounced = debounce((value) => {
         provideInterfaces(value, (interfaces) => {
-            const items = interfaces.map((label) => ({ label }));
-            quickPick.items = items;
+            quickPick.items = interfaces;
         });
     }, 400, { trailing: true });
 
@@ -56,7 +53,7 @@ function selectInterface(receiver) {
 
     quickPick.onDidChangeSelection(selection => {
         if (selection[0]) {
-            implement(selection[0].label, receiver);
+            implement(selection[0].detail + '.' + selection[0].label, receiver);
         }
         quickPick.hide();
     });
@@ -72,7 +69,7 @@ function implement(interface_, receiver) {
     vscode.window.withProgress({
         location: vscode.ProgressLocation.Notification,
         title: "Generating stub methods..."
-    }, (progress, token) => {
+    }, () => {
         return new Promise((resolve) => {
             const r = `${receiver.name} ${receiver.type_}`
             cp.exec(`impl "${r}" ${interface_}`,
@@ -84,8 +81,7 @@ function implement(interface_, receiver) {
                     }
 
                     const position = editor.selection.active;
-                    
-                    editor.insertSnippet(new vscode.SnippetString("\n" + stdout), position.with(position.line+1, 0));
+                    editor.insertSnippet(new vscode.SnippetString("\n" + stdout), position.with(position.line + 1, 0));
                     resolve(true);
                 });
         });

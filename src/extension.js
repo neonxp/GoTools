@@ -1,6 +1,7 @@
 const vscode = require('vscode');
 const { ErrorsWrapper, wrapError } = require('./errors');
 const selectReceiver = require('./implement-interface');
+const groupImports = require('./group-imports');
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -19,9 +20,7 @@ function activate(context) {
     );
     context.subscriptions.push(wrapErrorCommand);
 
-    vscode.commands.registerCommand("gotools.imports", function () {
-        // TODO
-    })
+    context.subscriptions.push(vscode.commands.registerCommand("gotools.group-imports", groupImports))
 
     context.subscriptions.push(vscode.commands.registerCommand("gotools.implement", selectReceiver));
 }

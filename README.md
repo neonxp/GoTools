@@ -24,7 +24,7 @@ Extension in active development! Your contribution is always welcome :)
 
 # Interface implementation
 
-Command "Go: Implement Interface Methods" based on https://github.com/ricardoerikson/vscode-go-impl-methods/ extension.
+Command "Go: Implement Interface Methods" based on https://github.com/ricardoerikson/vscode-go-impl-methods/ extension by Ricardo Erikson.
 
 Install the impl package as follows:
 
@@ -37,3 +37,12 @@ go get -u github.com/josharian/impl
 1. At command pallete select command "Go: Implement Interface Methods"
 2. Write receiver for methods. Example: "f *File", "m MyType", "c CustomType" 
 3. Select interface to implement
+
+
+# Group imports
+
+Group imports command based on https://github.com/gustavo-bordin/golang-imports-group/ extension by Gustavo Bordin.
+
+## Usage
+
+1. At command pallete select command "Go: Group imports"

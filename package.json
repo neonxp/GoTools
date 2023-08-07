@@ -2,7 +2,7 @@
 	"name": "gotools",
 	"displayName": "Golang Tools",
 	"description": "Tools for productive work",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"engines": {
 		"vscode": "^1.80.0"
 	},
@@ -55,6 +55,11 @@
 			{
 				"command": "gotools.implement",
 				"title": "Implement Interface Methods",
+				"category": "Go"
+			},
+			{
+				"command": "gotools.group-imports",
+				"title": "Group imports",
 				"category": "Go"
 			}
 		]
